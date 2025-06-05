@@ -107,7 +107,7 @@ const starWarsCharacters = [
   Crea una variabile chiamata "charactersNames" e assegnale un array vuoto
 */
 
-let charactersNames = [];
+const charactersNames = [];
 
 /* ESERCIZIO 2
   Utilizzando un ciclo for, cicla l'array "starWarsCharacters".
@@ -124,7 +124,7 @@ console.log(charactersNames);
   Seguendo i passaggi precedenti crea un nuovo array chiamato "femaleCharacters" e inserisci al suo interno tutti gli oggetti femminili.
 */
 
-let femaleCharacters = [];
+const femaleCharacters = [];
 
 for (let i = 0; i < starWarsCharacters.length; i++) {
   if (starWarsCharacters[i].gender === "female") {
@@ -153,23 +153,21 @@ let eyeColor = {
 */
 
 for (let i = 0; i < starWarsCharacters.length; i++) {
-  let character = starWarsCharacters[i];
-
-  switch (character.eye_color) {
+  switch (starWarsCharacters[i].eye_color) {
     case "blue":
-      eyeColor.blue.push(character);
+      eyeColor.blue.push(starWarsCharacters[i]);
       break;
     case "yellow":
-      eyeColor.yellow.push(character);
+      eyeColor.yellow.push(starWarsCharacters[i]);
       break;
     case "brown":
-      eyeColor.brown.push(character);
+      eyeColor.brown.push(starWarsCharacters[i]);
       break;
     case "red":
-      eyeColor.red.push(character);
+      eyeColor.red.push(starWarsCharacters[i]);
       break;
     case "blue-gray":
-      eyeColor["blue-gray"].push(character);
+      eyeColor["blue-gray"].push(starWarsCharacters[i]);
       break;
   }
 }
@@ -186,11 +184,11 @@ console.log("Blu-grigi:", eyeColor["blue-gray"]);
 
 let crewMass = 0;
 
-let j = 0;
+let j = 0; // I DEL FOR A MANO //
 
 while (j < starWarsCharacters.length) {
   crewMass += starWarsCharacters[j].mass;
-  j++;
+  j++; // QUESTO PER NON ENTRARE IN UN LOOP INFINITO
 }
 
 console.log(crewMass);
@@ -261,13 +259,30 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
   }
 }
 
-console.log(starWarsCharacters);
+// console.log(starWarsCharacters); //
 
 /* --EXTRA-- ESERCIZIO 9
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "charactersNames" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
 */
 
+// CICLEREI L'ARRAY FEMALECHARACTERS //
+// PER OGNI OGGETTO FEMMINILE, O UN SECONDO CICLO O UN METODO INCLUDES, troverei un modo per rimuovere l'elemento corrispondente da charactersNames
+
+for (let i = 0; i < femaleCharacters.length; i++) {
+  for (let j = 0; j < charactersNames.length; j++) {
+    if (femaleCharacters[i].name === charactersNames[j]) {
+      charactersNames.splice(j, 1);
+    }
+  }
+}
+
+console.log(charactersNames);
+
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+
+const randomElements = Math.floor(Math.random() * starWarsCharacters.length);
+const character = starWarsCharacters[randomElements];
+// console.log("Hai selezionato: " + character.name // SONO STANCHINO //
